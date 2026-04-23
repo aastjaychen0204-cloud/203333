@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0077be 0%, #001a33 100%);
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; /* 放在漸層背景之上，海草之下 */
+}
+
+/* 海草容器 */
+.seaweed-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* 海草本體 */
+.seaweed {
+  width: 15px;
+  height: 150px;
+  background-color: #2d5a27;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  transform-origin: bottom;
+  animation: sway 3s ease-in-out infinite alternate;
+}
+
+/* 讓海草的高度與速度參差不齊，看起來更自然 */
+.seaweed:nth-child(even) {
+  height: 100px;
+  animation-duration: 4s;
+}
+
+@keyframes sway {
+  from { transform: rotate(-5deg) skewX(-2deg); }
+  to { transform: rotate(5deg) skewX(2deg); }
+}
